@@ -1,0 +1,153 @@
+/*
+ *   Copyright (c) 2024 BearFM
+
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+$gruvbox-bg: #282828;
+$gruvbox-fg: #ebdbb2;
+$gruvbox-dark1: #3c3836;
+$gruvbox-dark2: #504945;
+$gruvbox-light0: #fbf1c7;
+$gruvbox-light1: #ebdbb2;
+$gruvbox-light2: #d5c4a1;
+$gruvbox-light3: #bdae93;
+$gruvbox-red: #cc241d;
+$gruvbox-green: #98971a;
+$gruvbox-yellow: #d79921;
+$gruvbox-blue: #458588;
+$gruvbox-purple: #b16286;
+$gruvbox-aqua: #689d6a;
+$gruvbox-orange: #d65d0e;
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 2em;
+    line-height: 1.6;
+
+    height: 100vh;
+    width: auto;
+    margin: 0;
+    padding: 0;
+
+    text-align: center;
+
+    background-color: $gruvbox-bg;
+    color: $gruvbox-fg;
+}
+
+header {
+    background-color: $gruvbox-dark1;
+    color: $gruvbox-fg;
+    a {
+        color: $gruvbox-fg;
+        text-decoration: dotted;
+        font-size: 1.5rem;
+        i {
+            vertical-align: middle;
+            display: inline-block;
+        }
+    }
+}
+
+nav {
+    background-color: $gruvbox-dark2;
+    color: $gruvbox-light1;
+}
+
+.title {
+    font-weight: bolder;
+}
+
+.article {
+    width: auto;
+}
+
+ul, li, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $gruvbox-light0;
+}
+
+a {
+    color: $gruvbox-blue;
+    &:hover {
+      color: $gruvbox-aqua;
+    }
+}
+
+button {
+    background-color: $gruvbox-purple;
+    color: $gruvbox-light0;
+    &:hover {
+      background-color: $gruvbox-blue;
+    }
+  }
+  
+
+p {
+    margin-bottom: 1em;
+}
+
+pre {
+    background-color: $gruvbox-dark2;
+    padding: 0.5em;
+    overflow: auto;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: $gruvbox-dark2;
+    color: $gruvbox-orange;
+    padding: 0.2em;
+    border-radius: 3px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1em;
+    border-collapse: collapse;
+    th, td {
+        border: 1px solid $gruvbox-dark1;
+        padding: 8px;
+        text-align: left;
+    }
+}
+
+th, td {
+    border: 1px solid $gruvbox-light0;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: $gruvbox-light1;
+}
+
+blockquote {
+    border-left: 2px solid $gruvbox-dark2;
+    margin: 1em 0;
+    padding-left: 1em;
+}
+
+footer {
+    background-color: $gruvbox-dark1;
+    color: $gruvbox-light2;
+}
