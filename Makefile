@@ -14,7 +14,7 @@ TMPL = $(SRCDIR)/tmpl.html
 URI = "https://bear.oops.wtf"
 
 .PHONY: all
-all: html css $(DISTDIR)/robots.txt $(DISTDIR)/sitemap.xml
+all: html css $(DISTDIR)/robots.txt $(DISTDIR)/sitemap.xml static
 
 # Build
 
@@ -59,7 +59,10 @@ clean:
 	rm -rfv $(CSSDIR)
 
 .PHONY: help
-
 help:
 	@egrep -h '\s##\s' $(MAKEFILE_LIST) | \
 	awk 'BEGIN {FS = ":.*?## "}; {printf "\033[34m%-15s\033[0m %s\n", $$1, $$2}'
+
+.PHONY: static
+static:
+	@install -v -D -t dist/ static/*

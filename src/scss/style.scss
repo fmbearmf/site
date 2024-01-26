@@ -34,6 +34,8 @@ $gruvbox-orange: #d65d0e;
 
 body {
     font-family: Arial, sans-serif;
+    font-size: 1.5em;
+
     margin: 2em;
     line-height: 1.6;
 
@@ -46,6 +48,12 @@ body {
 
     background-color: $gruvbox-bg;
     color: $gruvbox-fg;
+}
+
+.meta {
+    font-size: 0.75em;
+    line-height: 1;
+    color: $gruvbox-dark2;
 }
 
 header {
