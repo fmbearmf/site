@@ -1,5 +1,6 @@
 SRCDIR = src
 DISTDIR = dist
+STATICDIR = static
 CSSDIR = $(DISTDIR)/css
 SCSSDIR = $(SRCDIR)/scss
 SCSSINCDIR = $(SCSSDIR)/includes
@@ -10,11 +11,12 @@ CSSFILES = $(patsubst $(SCSSDIR)/%.scss, $(CSSDIR)/%.css, $(SCSSFILES))
 MDFILES = $(shell find $(SRCDIR) -type f -name '*.md')
 HTMLFILES = $(patsubst $(SRCDIR)/%.md, $(DISTDIR)/%.html, $(MDFILES))
 TMPL = $(SRCDIR)/tmpl.html
+STATICFILES = $(shell find $(STATICDIR) -type f -name '*')
 
 URI = "https://bear.oops.wtf"
 
 .PHONY: all
-all: html css $(DISTDIR)/robots.txt $(DISTDIR)/sitemap.xml static
+all: html css $(DISTDIR)/robots.txt $(DISTDIR)/sitemap.xml $(DISTDIR)/blogindex.txt static
 
 # Build
 
@@ -52,7 +54,14 @@ $(DISTDIR)/sitemap.xml: $(HTMLFILES)
 	done
 	@echo '</urlset>' >> $@
 
-
+$(DISTDIR)/blogindex.txt: $(HTMLFILES)
+	@> $@
+	@for f in $^; do \
+		uri="$(URI)$${f#$(DISTDIR)}"; \
+		if [[ "$$uri" == "$(URI)/blog/"* ]]; then \
+			echo "$$uri" >> $@; \
+		fi; \
+	done
 .PHONY: clean
 clean:
 	rm -v $(HTMLFILES)
@@ -64,5 +73,5 @@ help:
 	awk 'BEGIN {FS = ":.*?## "}; {printf "\033[34m%-15s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: static
-static:
-	@install -v -D -t dist/ static/*
+static: $(STATICFILES)
+	@cp -r $(STATICFILES) $(DISTDIR)
