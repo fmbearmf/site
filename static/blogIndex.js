@@ -15,7 +15,7 @@ function blogIndex() {
                 const liElement = document.createElement('li');
                 const aElement = document.createElement('a');
 
-                aElement.href = uri;
+                aElement.href = uri.substring(uri.indexOf('/blog/'));
                 aElement.textContent = name;
                 liElement.appendChild(aElement);
                 ulElement.appendChild(liElement);
