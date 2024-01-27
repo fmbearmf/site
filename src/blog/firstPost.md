@@ -3,6 +3,7 @@ title: First Post
 author: BearFM
 date: January 26, 2024
 modified: January 26, 2024
+header: 
 ---
 
 wowzers first post

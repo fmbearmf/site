@@ -67,14 +67,18 @@ $(DISTDIR)/sitemap.xml: $(HTMLFILES)
 	done
 	@echo '</urlset>' >> $@
 
-$(DISTDIR)/blogindex.txt: $(HTMLFILES)
+$(DISTDIR)/blogindex.txt: $(MDFILES)
 	@> $@
 	@for f in $^; do \
-		uri="$(URI)$${f#$(DISTDIR)}"; \
+		uri="$(URI)$${f#$(SRCDIR)}"; \
 		if [[ "$$uri" == "$(URI)/blog/"* ]]; then \
-			echo "$$uri" >> $@; \
+			creation_date=$$(stat -c %Y $$f); \
+			uri=$$(echo "$$uri" | sed 's/\.md$$/.html/'); \
+			echo "$$creation_date $$uri" >> $@; \
 		fi; \
 	done
+	@sort -n -k1 -o $@ $@
+
 .PHONY: clean
 clean:
 	rm -rfv $(DISTDIR)/*
