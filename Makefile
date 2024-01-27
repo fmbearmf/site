@@ -87,6 +87,6 @@ help:
 .PHONY: static
 static: $(STATICOUT)
 
-$(STATICOUT): $(STATICFILES)
+$(DISTDIR)/%: $(STATICDIR)/%
 	@mkdir -p $(dir $@)
 	@cp -v $< $@
