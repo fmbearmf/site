@@ -50,7 +50,7 @@ $(DISTDIR)/%.min.js: $(JSDIR)/%.js
 css: $(CSSFILES)
 
 $(CSSDIR)/%.css: $(SCSSDIR)/%.scss | $(CSSDIR)
-	sass --load-path=$(SCSSINCDIR) --style=compressed --scss $< $@
+	sass --sourcemap=none --load-path=$(SCSSINCDIR) --style=compressed --scss $< $@
 
 $(CSSDIR):
 	mkdir -p $@
