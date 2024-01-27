@@ -11,5 +11,5 @@ Index of blog posts:
     JavaScript must be enabled for the blog index to work. Otherwise visit <a href="/blogindex.txt">blogindex.txt</a> for a plaintext list.
 </div>
 
-<script type="text/javascript" src="/blogIndex.js"></script>
+<script type="text/javascript" src="/blogIndex.min.js"></script>
 <script type="text/javascript">blogIndex();</script>

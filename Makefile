@@ -4,6 +4,7 @@ STATICDIR = static
 CSSDIR = $(DISTDIR)/css
 SCSSDIR = $(SRCDIR)/scss
 SCSSINCDIR = $(SCSSDIR)/includes
+JSDIR = js
 
 SCSSFILES = $(wildcard $(SCSSDIR)/*.scss)
 CSSFILES = $(patsubst $(SCSSDIR)/%.scss, $(CSSDIR)/%.css, $(SCSSFILES))
@@ -11,12 +12,17 @@ CSSFILES = $(patsubst $(SCSSDIR)/%.scss, $(CSSDIR)/%.css, $(SCSSFILES))
 MDFILES = $(shell find $(SRCDIR) -type f -name '*.md')
 HTMLFILES = $(patsubst $(SRCDIR)/%.md, $(DISTDIR)/%.html, $(MDFILES))
 TMPL = $(SRCDIR)/tmpl.html
+
 STATICFILES = $(shell find $(STATICDIR) -type f -name '*')
+STATICOUT = $(patsubst $(STATICDIR)/%, $(DISTDIR)/%, $(STATICFILES))
+
+JSFILES = $(shell find $(JSDIR) -type f -name '*.js')
+MINIFIEDFILES := $(patsubst $(JSDIR)/%.js, $(DISTDIR)/%.min.js, $(JSFILES))
 
 URI = "https://bear.oops.wtf"
 
 .PHONY: all
-all: html css $(DISTDIR)/robots.txt $(DISTDIR)/sitemap.xml $(DISTDIR)/blogindex.txt static
+all: html css $(DISTDIR)/robots.txt $(DISTDIR)/sitemap.xml $(DISTDIR)/blogindex.txt static js
 
 # Build
 
@@ -27,11 +33,18 @@ html: $(HTMLFILES)
 #	pandoc --from markdown --to html --standalone $< -o $@
 
 $(DISTDIR)/%.html: $(SRCDIR)/%.md $(TMPL)
+	@mkdir -pv $(dir $@)
 	pandoc \
 	--from markdown_github+smart+yaml_metadata_block+auto_identifiers \
 	--to html \
 	--template $(TMPL) \
 	-o $@ $<
+
+.PHONY: js
+js: $(MINIFIEDFILES)
+
+$(DISTDIR)/%.min.js: $(JSDIR)/%.js
+	uglifyjs $< -m -c --mangle-props -o $@
 
 .PHONY: css
 css: $(CSSFILES)
@@ -64,8 +77,7 @@ $(DISTDIR)/blogindex.txt: $(HTMLFILES)
 	done
 .PHONY: clean
 clean:
-	rm -v $(HTMLFILES)
-	rm -rfv $(CSSDIR)
+	rm -rfv $(DISTDIR)/*
 
 .PHONY: help
 help:
@@ -73,5 +85,8 @@ help:
 	awk 'BEGIN {FS = ":.*?## "}; {printf "\033[34m%-15s\033[0m %s\n", $$1, $$2}'
 
 .PHONY: static
-static: $(STATICFILES)
-	@cp -r $(STATICFILES) $(DISTDIR)
+static: $(STATICOUT)
+
+$(STATICOUT): $(STATICFILES)
+	@mkdir -p $(dir $@)
+	@cp -v $< $@
