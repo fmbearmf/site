@@ -8,7 +8,7 @@ header: <link rel="stylesheet" href="/css/center.css">
 
 Hello, I'm Bear.
 
-[Cool Links](/coollinks)
+[Cool Links](/coolLinks.html)
 
 [Git](/git)
 

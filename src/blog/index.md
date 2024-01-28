@@ -3,7 +3,7 @@ title: Blog Index
 author: BearFM
 date: January 26, 2024
 modified: January 26, 2024
-header: <link rel="stylesheet" href="/css/center.css">
+header: <link rel="stylesheet" href="/css/center.css" media="print" onload="this.media='all'">
 ---
 
 (Sorted by date created)

@@ -8,4 +8,4 @@ header:
 
 Pages I think are cool:
 
-[Crony's Page](https://cronyakatsuki.xyz/)
+<a href="https://cronyakatsuki.xyz" target="_blank">Crony's Page</a>
