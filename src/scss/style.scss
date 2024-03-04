@@ -16,9 +16,9 @@
  */
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
-$gruvbox-bg: #282828;
+$gruvbox-bg: #1b1b1b;
 $gruvbox-fg: #ebdbb2;
-$gruvbox-dark1: #3c3836;
+$gruvbox-dark1: #2c2927;
 $gruvbox-dark2: #504945;
 $gruvbox-light0: #fbf1c7;
 $gruvbox-light1: #ebdbb2;
@@ -44,7 +44,7 @@ body {
     margin: 0;
     padding: 0;
 
-    text-align: center;
+    text-align: left;
 
     background-color: $gruvbox-bg;
     color: $gruvbox-fg;
@@ -71,6 +71,9 @@ body {
 header {
     background-color: $gruvbox-dark1;
     color: $gruvbox-fg;
+
+    height: auto;
+
     a {
         color: $gruvbox-fg;
         text-decoration: dotted;
@@ -83,10 +86,15 @@ header {
 }
 
 nav {
-    background-color: $gruvbox-dark2;
+    $pad: 0.25%;
+
+    background-color: $gruvbox-dark1;
     color: $gruvbox-light1;
     display: flex;
     flex-direction: row;
+
+    padding-top: $pad;
+    padding-bottom: $pad;
 
     align-items: center;
     justify-content: center;
@@ -96,15 +104,29 @@ nav {
 
 .title {
     font-weight: bolder;
+    text-align: center;
 }
 
 .article {
-    width: auto;
-    margin: 0 auto;
-    margin-top: 0%;
-    text-align: justify;
+    $pad: 42.25%;
 
-    width: 30vw;
+    margin-top: 0;
+    margin-bottom: auto;
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+
+    padding-left: $pad;
+    padding-right: $pad;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: normal;
+    p {
+        text-align: left;
+    }
 }
 
 .article h1,
@@ -113,7 +135,7 @@ nav {
 .article h4,
 .article h5,
 .article h6 {
-    text-align: center;
+    text-align: left;
 }
 
 ul, li, ol {
