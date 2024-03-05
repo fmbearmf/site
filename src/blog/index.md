@@ -3,7 +3,7 @@ title: Blog Index
 author: BearFM
 date: January 26, 2024
 modified: January 26, 2024
-header: <link rel="stylesheet" href="/css/center.css" media="print" onload="this.media='all'">
+header:
 ---
 
 (Sorted by date created)
@@ -14,7 +14,6 @@ header: <link rel="stylesheet" href="/css/center.css" media="print" onload="this
 
 
 <div id="blogIndex">
-    JavaScript must be enabled for the blog index to work. Otherwise visit <a href="/blogindex.txt">blogindex.txt</a> for a plaintext list.
 </div>
 
-[<script type="text/javascript" src="/blogIndex.js"></script>](blogIndex.min.js)
+[<script type="text/javascript" src="/blogIndex.js"></script>](blogIndex.js)
