@@ -1,15 +1,11 @@
-# 🚀 Welcome to your new awesome project!
+a weird clusterfuck of tooling to make an awful website. don't do what i did.
 
-This project has been created using **webpack-cli**, you can now run
+Requirements:
+    pandoc
+    GNU make
+    uglify-js
+    scss (sass)
 
-```
-npm run build
-```
-
-or
-
-```
-yarn build
-```
-
-to bundle your application
+Usage:
+    Use GNU Make to compile,
+    Point your webserver to the dist/ directory
