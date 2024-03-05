@@ -17,5 +17,4 @@ header: <link rel="stylesheet" href="/css/center.css" media="print" onload="this
     JavaScript must be enabled for the blog index to work. Otherwise visit <a href="/blogindex.txt">blogindex.txt</a> for a plaintext list.
 </div>
 
-[<script type="text/javascript" src="/blogIndex.min.js"></script>](blogIndex.min.js)
-[<script type="text/javascript">blogIndex();</script>]()
+[<script type="text/javascript" src="/blogIndex.js"></script>](blogIndex.min.js)

@@ -4,7 +4,6 @@ STATICDIR = static
 CSSDIR = $(DISTDIR)/css
 SCSSDIR = $(SRCDIR)/scss
 SCSSINCDIR = $(SCSSDIR)/includes
-JSDIR = js
 
 SCSSFILES = $(wildcard $(SCSSDIR)/*.scss)
 CSSFILES = $(patsubst $(SCSSDIR)/%.scss, $(CSSDIR)/%.css, $(SCSSFILES))
@@ -15,9 +14,6 @@ TMPL = $(SRCDIR)/tmpl.html
 
 STATICFILES = $(shell find $(STATICDIR) -type f -name '*')
 STATICOUT = $(patsubst $(STATICDIR)/%, $(DISTDIR)/%, $(STATICFILES))
-
-JSFILES = $(shell find $(JSDIR) -type f -name '*.js')
-MINIFIEDFILES := $(patsubst $(JSDIR)/%.js, $(DISTDIR)/%.min.js, $(JSFILES))
 
 URI = "https://bear.oops.wtf"
 
@@ -41,10 +37,8 @@ $(DISTDIR)/%.html: $(SRCDIR)/%.md $(TMPL)
 	-o $@ $<
 
 .PHONY: js
-js: $(MINIFIEDFILES)
-
-$(DISTDIR)/%.min.js: $(JSDIR)/%.js
-	uglifyjs $< -m -c --mangle-props -o $@
+js:
+	pnpm exec webpack
 
 .PHONY: css
 css: $(CSSFILES)

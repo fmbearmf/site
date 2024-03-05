@@ -1,16 +1,17 @@
-function convertCamelCaseToReadable(text) {
-    return text
-      .replace(/([a-z])([A-Z])/g, '$1 $2')
-      .replace(/(\d{4}-\d{2}-\d{2})/g, ' $1')
-      .replace(/\b\w/g, c => c.toUpperCase());
+async function convertCamelCaseToReadable(text: string): Promise<string> {
+    return await text
+    .replace(/([a-z])([A-Z])/g, '$1 $2')
+    .replace(/(\d{4}-\d{2}-\d{2})/g, ' $1')
+    .replace(/\b\w/g, c => c.toUpperCase());
 }
 
-function blogIndex() {
-    document.getElementById('blogIndex').innerHTML = null;
-    document.getElementById('latestPost').innerHTML = null;
+async function blogIndex(): Promise<void> {
+    if (!document.getElementById('blogIndex') || !document.getElementById('latestPost')) return;
 
+    document.getElementById('blogIndex')!.innerHTML = "";
+    document.getElementById('latestPost')!.innerHTML = "";
 
-    fetch('/blogindex.txt')
+    fetch("/blogindex.txt")
     .then(response => response.text())
     .then(data => {
       const uriList = data.split('\n');
@@ -24,11 +25,11 @@ function blogIndex() {
       entries.sort((a, b) => b.timestamp - a.timestamp);
       const ulElement = document.createElement('ul');
   
-      entries.forEach(entry => {
+      entries.forEach(async entry => {
         if (entry.uri) {
-          const fileName = entry.uri.split('/').pop().replace('.html', '');
+          const fileName = entry.uri.split('/').pop()!.replace('.html', '');
 
-          const readableName = convertCamelCaseToReadable(fileName);
+          const readableName = await convertCamelCaseToReadable(fileName);
   
           if (fileName.toLowerCase() !== 'index') {
             const liElement = document.createElement('li');
@@ -42,9 +43,11 @@ function blogIndex() {
         }
       });
 
-      document.getElementById('blogIndex').appendChild(ulElement);
+      document.getElementById('blogIndex')!.appendChild(ulElement);
     })
     .catch(error => {
       console.error('Error fetching and processing blog index:', error);
     });
 }
+
+blogIndex();
