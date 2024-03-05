@@ -1,10 +1,8 @@
-bear.oops.wtf
-
-Redesign of https://bear.oops.wtf
+a weird clusterfuck of tooling to make an awful website. don't do what i did.
 
 Requirements:
     pandoc
-    make
+    GNU make
     uglify-js
     scss (sass)
 
