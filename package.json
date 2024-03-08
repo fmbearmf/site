@@ -2,10 +2,15 @@
   "devDependencies": {
     "@webpack-cli/generators": "^3.0.7",
     "css-loader": "^6.10.0",
+    "devtools-detector": "^2.0.15",
+    "disable-tree-shaking-for-chunk-plugin": "^2.0.0",
+    "glob": "^10.3.10",
     "mini-css-extract-plugin": "^2.8.1",
+    "node-sass": "^9.0.0",
     "sass": "^1.71.1",
     "sass-loader": "^14.1.1",
     "style-loader": "^3.3.4",
+    "terser-webpack-plugin": "^5.3.10",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
     "webpack": "^5.90.3",
@@ -14,5 +19,8 @@
   "scripts": {
     "build": "NODE_ENV=production make",
     "dev": "NODE_ENV=development make"
-  }
+  },
+  "sideEffects": [
+    "./js/main.ts"
+  ]
 }

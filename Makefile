@@ -18,7 +18,8 @@ STATICOUT = $(patsubst $(STATICDIR)/%, $(DISTDIR)/%, $(STATICFILES))
 URI = "https://bear.oops.wtf"
 
 .PHONY: all
-all: html css $(DISTDIR)/robots.txt $(DISTDIR)/sitemap.xml $(DISTDIR)/blogindex.txt static js
+#        css
+all: html $(DISTDIR)/robots.txt $(DISTDIR)/sitemap.xml $(DISTDIR)/blogindex.txt static js
 
 # Build
 
@@ -40,14 +41,14 @@ $(DISTDIR)/%.html: $(SRCDIR)/%.md $(TMPL)
 js:
 	pnpm exec webpack
 
-.PHONY: css
-css: $(CSSFILES)
+#.PHONY: css
+#css: $(CSSFILES)
 
-$(CSSDIR)/%.css: $(SCSSDIR)/%.scss | $(CSSDIR)
-	sass --sourcemap=none --load-path=$(SCSSINCDIR) --style=compressed --scss $< $@
+#$(CSSDIR)/%.css: $(SCSSDIR)/%.scss | $(CSSDIR)
+# sass --sourcemap=none --load-path=$(SCSSINCDIR) --style=compressed --scss $< $@
 
-$(CSSDIR):
-	mkdir -p $@
+#$(CSSDIR):
+#	mkdir -p $@
 
 $(DISTDIR)/robots.txt:
 	@echo "User-Agent: *" > $@

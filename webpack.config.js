@@ -2,17 +2,19 @@
 
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const DisableTreeShakingForChunk = require('disable-tree-shaking-for-chunk-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
+const glob = require("glob");
 
 const isProduction = process.env.NODE_ENV == 'production';
 
-
 const stylesHandler = MiniCssExtractPlugin.loader;
-
-
 
 const config = {
     entry: {
-        blogIndex: "./js/blogIndex.ts"
+        blogIndex: glob.sync("./js/blogIndex/**/*.ts").map(file => path.resolve(file)),
+        css: glob.sync("./js/css/**/*.ts").map(file => path.resolve(file)).concat(["./src/scss/style.scss"]),
+
     },
     output: {
         filename: "[name].js",
@@ -20,9 +22,9 @@ const config = {
     },
     plugins: [
         new MiniCssExtractPlugin(),
-
-        // Add your plugins here
-        // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+        new DisableTreeShakingForChunk({
+            test: "main"
+        }),
     ],
     module: {
         rules: [
@@ -33,31 +35,28 @@ const config = {
             },
             {
                 test: /\.css$/i,
-                use: [stylesHandler,'css-loader'],
+                use: ["style-loader", 'css-loader'],
             },
             {
                 test: /\.s[ac]ss$/i,
-                use: [stylesHandler, 'css-loader', 'sass-loader'],
+                use: ["style-loader", 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
                 type: 'asset',
             },
-
-            // Add your rules for custom modules here
-            // Learn more about loaders from https://webpack.js.org/loaders/
         ],
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.jsx', '.js', '...'],
+        extensions: ['.tsx', '.ts', '.jsx', '.js', '.scss', '...'],
     },
 };
 
 module.exports = () => {
     if (isProduction) {
         config.mode = 'production';
-        
-        
+
+
     } else {
         config.mode = 'development';
     }

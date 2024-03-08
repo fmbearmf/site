@@ -48,6 +48,14 @@ body {
 
     background-color: $gruvbox-bg;
     color: $gruvbox-fg;
+
+    white-space: normal;
+}
+
+.header-container {
+    width: 100vw;
+    text-align: center;
+    justify-content: center;
 }
 
 .center-image {
@@ -127,6 +135,7 @@ nav {
     p {
         text-align: left;
     }
+    white-space: normal;
 }
 
 .article h1,
@@ -136,16 +145,19 @@ nav {
 .article h5,
 .article h6 {
     text-align: left;
+    display: block;
 }
 
 ul, li, ol {
     margin: 0;
     padding: 0;
     list-style: none;
+    display: block;
 }
 
 h1, h2, h3, h4, h5, h6 {
     color: $gruvbox-light0;
+    display: block;
 }
 
 a {
@@ -153,6 +165,7 @@ a {
     &:hover {
       color: $gruvbox-aqua;
     }
+    display: block;
 }
 
 button {
@@ -166,6 +179,8 @@ button {
 
 p {
     margin-bottom: 1em;
+    display: inline-block;
+    white-space: normal;
 }
 
 pre {
@@ -180,6 +195,7 @@ code {
     color: $gruvbox-orange;
     padding: 0.2em;
     border-radius: 3px;
+    display: block;
 }
 
 table {
@@ -192,6 +208,7 @@ table {
         padding: 8px;
         text-align: left;
     }
+    display: table;
 }
 
 th, td {
