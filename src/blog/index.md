@@ -9,7 +9,7 @@ header:
 (Sorted by date created)
 
 <div id="latestPost">
-    JavaScript must be enabled for the blog index to work. Otherwise visit <a href="/blogindex.txt">blogindex.txt</a> for a plaintext list.
+    JavaScript must be enabled for the index to build. Otherwise visit <a href="/blogindex.txt">blogindex.txt</a> for a static list.
 </div>
 
 
