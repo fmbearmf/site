@@ -61,4 +61,4 @@ async function blogIndex(): Promise<void> {
     });
 }
 
-blogIndex();
+document.addEventListener('DOMContentLoaded', blogIndex);
