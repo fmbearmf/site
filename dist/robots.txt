@@ -1,3 +1,2 @@
 User-Agent: *
-Allow: *
-Sitemap: https://bear.oops.wtf/sitemap.xml
+Disallow: /
