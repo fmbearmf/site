@@ -14,6 +14,7 @@ const config = {
     entry: {
         blogIndex: glob.sync("./js/blogIndex/**/*.ts").map(file => path.resolve(file)),
         css: glob.sync("./js/css/**/*.ts").map(file => path.resolve(file)).concat(["./src/scss/style.scss"]),
+        main: glob.sync("./js/main/**/*.ts").map(file => path.resolve(file)),
 
     },
     output: {
