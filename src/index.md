@@ -10,5 +10,5 @@ Hello, I'm Bear. I don't have much to put here.
 I play some games (Tetris recently),
 
 [Cool Links](/coolLinks.html)
-[Git](/git)
-[Blog Posts](/blog)
+[Git](/git/)
+[Blog Posts](/blog/)
