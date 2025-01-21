@@ -1,1 +1,32 @@
-({196:function(){var e=this&&this.__awaiter||function(e,t,n,i){return new(n||(n=Promise))((function(o,r){function a(e){try{l(i.next(e))}catch(e){r(e)}}function c(e){try{l(i.throw(e))}catch(e){r(e)}}function l(e){var t;e.done?o(e.value):(t=e.value,t instanceof n?t:new n((function(e){e(t)}))).then(a,c)}l((i=i.apply(e,t||[])).next())}))};document.addEventListener("DOMContentLoaded",(function(){return e(this,void 0,void 0,(function*(){document.getElementById("blogIndex")&&document.getElementById("latestPost")&&(document.getElementById("blogIndex").innerHTML="",document.getElementById("latestPost").innerHTML="",fetch("/blogindex.txt").then((e=>e.text())).then((t=>{const n=t.split("\n").filter((e=>""!==e.trim())).map((e=>{const t=e.split(" ");return{timestamp:parseInt(t[0]),uri:t[1]||""}}));n.sort(((e,t)=>t.timestamp-e.timestamp));const i=document.createElement("ul");n.forEach((t=>e(this,void 0,void 0,(function*(){if(t.uri){const n=t.uri.split("/").pop().replace(".html",""),o=`${yield function(t){return e(this,void 0,void 0,(function*(){return new Promise((e=>{e(t.replace(/([a-z])([A-Z])/g,"$1 $2").replace(/(\d{4}-\d{2}-\d{2})/g," $1").replace(/\b\w/g,(e=>e.toUpperCase())))}))}))}(n)}`;if("index"!==n.toLowerCase()){const e=document.createElement("li"),n=document.createElement("a"),r=document.createElement("p");e.style.whiteSpace="nowrap",r.style.gap="10px",r.textContent=`${new Intl.DateTimeFormat(navigator.language).format(new Date(1e3*t.timestamp))}⠀`,n.href=t.uri.substring(t.uri.indexOf("/blog/")),n.textContent=o,n.style.display="inline-block",r.style.display="inline-block",e.appendChild(r),e.appendChild(n),i.appendChild(e)}}})))),document.getElementById("blogIndex").appendChild(i)})).catch((e=>{console.error("Error fetching and processing blog index:",e)})))}))}))}})[196]();
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./js/blogIndex/blogIndex.ts":
+/*!***********************************!*\
+  !*** ./js/blogIndex/blogIndex.ts ***!
+  \***********************************/
+/***/ (function() {
+
+eval("var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {\n    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }\n    return new (P || (P = Promise))(function (resolve, reject) {\n        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }\n        function rejected(value) { try { step(generator[\"throw\"](value)); } catch (e) { reject(e); } }\n        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }\n        step((generator = generator.apply(thisArg, _arguments || [])).next());\n    });\n};\nfunction convertCamelCaseToReadable(text) {\n    return __awaiter(this, void 0, void 0, function* () {\n        // i have no idea how this regex works\n        return new Promise((resolve) => {\n            resolve(text\n                .replace(/([a-z])([A-Z])/g, '$1 $2')\n                .replace(/(\\d{4}-\\d{2}-\\d{2})/g, ' $1')\n                .replace(/\\b\\w/g, c => c.toUpperCase()));\n        });\n    });\n}\nfunction blogIndex() {\n    return __awaiter(this, void 0, void 0, function* () {\n        if (!document.getElementById('blogIndex') || !document.getElementById('latestPost'))\n            return;\n        document.getElementById('blogIndex').innerHTML = \"\";\n        document.getElementById('latestPost').innerHTML = \"\";\n        fetch(\"/blogindex.txt\")\n            .then(response => response.text())\n            .then(data => {\n            const uriList = data.split('\\n');\n            const filteredUriList = uriList.filter(entry => entry.trim() !== '');\n            const entries = filteredUriList.map(entry => {\n                const parts = entry.split(' ');\n                return { timestamp: parseInt(parts[0]), uri: parts[1] || '' };\n            });\n            entries.sort((a, b) => b.timestamp - a.timestamp);\n            const ulElement = document.createElement('ul');\n            entries.forEach((entry) => __awaiter(this, void 0, void 0, function* () {\n                if (entry.uri) {\n                    const fileName = entry.uri.split('/').pop().replace('.html', '');\n                    const readableName = `${yield convertCamelCaseToReadable(fileName)}`;\n                    if (fileName.toLowerCase() !== 'index') {\n                        const liElement = document.createElement('li');\n                        const aElement = document.createElement('a');\n                        const pElement = document.createElement('p');\n                        liElement.style.whiteSpace = \"nowrap\";\n                        pElement.style.gap = \"10px\";\n                        pElement.textContent = `${new Intl.DateTimeFormat(navigator.language).format(new Date(entry.timestamp * 1000))}⠀`;\n                        aElement.href = entry.uri.substring(entry.uri.indexOf('/blog/'));\n                        aElement.textContent = readableName;\n                        aElement.style.display = \"inline-block\";\n                        pElement.style.display = \"inline-block\";\n                        liElement.appendChild(pElement);\n                        liElement.appendChild(aElement);\n                        ulElement.appendChild(liElement);\n                    }\n                }\n            }));\n            document.getElementById('blogIndex').appendChild(ulElement);\n        })\n            .catch(error => {\n            console.error('Error fetching and processing blog index:', error);\n        });\n    });\n}\ndocument.addEventListener('DOMContentLoaded', blogIndex);\n\n\n//# sourceURL=webpack:///./js/blogIndex/blogIndex.ts?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module is referenced by other modules so it can't be inlined
+/******/ 	var __webpack_exports__ = {};
+/******/ 	__webpack_modules__["./js/blogIndex/blogIndex.ts"]();
+/******/ 	
+/******/ })()
+;
