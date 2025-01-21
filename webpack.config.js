@@ -15,15 +15,15 @@ const config = {
         blogIndex: glob.sync("./js/blogIndex/**/*.ts").map(file => path.resolve(file)),
         css: glob.sync("./js/css/**/*.ts").map(file => path.resolve(file)).concat(["./src/scss/style.scss"]),
         main: glob.sync("./js/main/**/*.ts").map(file => path.resolve(file)),
-        elastic: glob.sync("./js/calc/**/*.ts").map(file => path.resolve(file)),
-
     },
     output: {
         filename: "[name].js",
         path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({
+            filename: "bundle.css"
+        }),
         new DisableTreeShakingForChunk({
             test: "main"
         }),
@@ -37,11 +37,11 @@ const config = {
             },
             {
                 test: /\.css$/i,
-                use: ["style-loader", 'css-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
             },
             {
                 test: /\.s[ac]ss$/i,
-                use: ["style-loader", 'css-loader', 'sass-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,

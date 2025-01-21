@@ -52,8 +52,8 @@ js:
 
 $(DISTDIR)/robots.txt:
 	@echo "User-Agent: *" > $@
-	@echo "Disallow: /" >> $@
-#	@echo "Sitemap: $(URI)/sitemap.xml" >> $@
+	@echo "Allow: /" >> $@
+	@echo "Sitemap: $(URI)/sitemap.xml" >> $@
 
 $(DISTDIR)/sitemap.xml: $(HTMLFILES)
 	@echo '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' > $@

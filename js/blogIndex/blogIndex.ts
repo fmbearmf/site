@@ -1,9 +1,11 @@
 async function convertCamelCaseToReadable(text: string): Promise<string> {
   // i have no idea how this regex works
-  return await text
+  return new Promise<string>((resolve) => {
+    resolve(text
     .replace(/([a-z])([A-Z])/g, '$1 $2')
     .replace(/(\d{4}-\d{2}-\d{2})/g, ' $1')
-    .replace(/\b\w/g, c => c.toUpperCase());
+    .replace(/\b\w/g, c => c.toUpperCase()))
+  });
 }
 
 async function blogIndex(): Promise<void> {

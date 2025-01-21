@@ -6,7 +6,7 @@ export class InputFieldCache {
         this.cacheInputFields();
     }
 
-    private async cacheInputFields() {
+    private async cacheInputFields(): Promise<void> {
         const inputFields = document.querySelectorAll('input');
         console.debug(inputFields);
         inputFields.forEach((input: HTMLInputElement) => {
